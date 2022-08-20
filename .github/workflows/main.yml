@@ -70,29 +70,29 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             echo "Remove Container ID"
-            if [ $(docker ps -af "name=memtes" -q | awk '{print length}') -gt 1 ]
+            if [ $(docker ps -af "name=mamtes" -q | awk '{print length}') -gt 1 ]
             then
               echo "Container Exist"
-              docker rm -f $(docker ps -af "name=memtes" -q)
+              docker rm -f $(docker ps -af "name=mamtes" -q)
             else
               echo "Container No Exist"
             fi
             
             echo "Remove Image ID"
-            if [ $(docker images -f "reference=**/memtes" -q | awk '{print length}') -gt 1 ]
+            if [ $(docker images -f "reference=**/mamtes" -q | awk '{print length}') -gt 1 ]
             then
               echo "Image Exist"
-              docker rmi -f menofdocker/memtes:latest
+              docker rmi -f menofdocker/mamtes:latest
             else
               echo "Image No Exist"
             fi
             
             echo "Pull Docker Image"
-            docker pull menofdocker/memtes:latest
+            docker pull menofdocker/mamtes:latest
             
             echo "Run Docker Image"
-            docker run -d --name memtes \
+            docker run -d --name mamtes \
                        -p 30004:8080 \
                        -e USE_PROFILE=prod \
                        --add-host=host.docker.internal:host-gateway \
-                       --restart unless-stopped menofdocker/memtes
+                       --restart unless-stopped menofdocker/mamtes
