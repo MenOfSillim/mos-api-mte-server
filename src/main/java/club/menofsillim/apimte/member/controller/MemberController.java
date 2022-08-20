@@ -18,4 +18,9 @@ public class MemberController {
     public List<Member> members() {
         return memberService.members();
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test1";
+    }
 }
