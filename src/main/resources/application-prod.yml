@@ -4,3 +4,6 @@ spring:
     url: jdbc:postgresql://host.docker.internal:54321/mamtes
     username: menofsillim
     password: sillim123!
+  jpa:
+    hibernate:
+      ddl-auto: create
