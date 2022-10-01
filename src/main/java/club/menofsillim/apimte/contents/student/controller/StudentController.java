@@ -1,13 +1,15 @@
-package club.menofsillim.apimte.student.controller;
+package club.menofsillim.apimte.contents.student.controller;
 
-import club.menofsillim.apimte.student.domain.Student;
-import club.menofsillim.apimte.student.service.StudentService;
+import club.menofsillim.apimte.contents.student.domain.Student;
+import club.menofsillim.apimte.contents.student.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
+@ApiIgnore
 @RestController
 @RequiredArgsConstructor
 public class StudentController {

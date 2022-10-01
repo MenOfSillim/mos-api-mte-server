@@ -1,7 +1,7 @@
-package club.menofsillim.apimte.student.service;
+package club.menofsillim.apimte.contents.student.service;
 
-import club.menofsillim.apimte.student.domain.Student;
-import club.menofsillim.apimte.student.repository.StudentRepository;
+import club.menofsillim.apimte.contents.student.domain.Student;
+import club.menofsillim.apimte.contents.student.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package club.menofsillim.apimte.student.domain;
+package club.menofsillim.apimte.contents.student.domain;
 
 import lombok.Builder;
 import lombok.Getter;

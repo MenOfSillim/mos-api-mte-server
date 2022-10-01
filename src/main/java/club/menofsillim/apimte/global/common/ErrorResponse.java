@@ -1,4 +1,4 @@
-package club.menofsillim.apimte.common;
+package club.menofsillim.apimte.global.common;
 
 import lombok.Getter;
 import lombok.Setter;

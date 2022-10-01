@@ -1,24 +1,28 @@
-package club.menofsillim.apimte.member.controller;
+package club.menofsillim.apimte.contents.member.controller;
 
-import club.menofsillim.apimte.common.ErrorResponse;
-import club.menofsillim.apimte.member.domain.dto.MemberDTO;
-import club.menofsillim.apimte.member.domain.entity.Member;
-import club.menofsillim.apimte.member.service.MemberService;
+import club.menofsillim.apimte.contents.member.domain.dto.MemberDTO;
+import club.menofsillim.apimte.contents.member.domain.entity.Member;
+import club.menofsillim.apimte.contents.member.enu.MemberGroup;
+import club.menofsillim.apimte.contents.member.service.MemberService;
+import club.menofsillim.apimte.global.common.ErrorResponse;
+import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
@@ -41,7 +45,8 @@ public class MemberController {
 //    @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @PostMapping("/member")
-    public ResponseEntity<?> saveMember(@Validated @RequestBody final MemberDTO dto, BindingResult bindingResult) {
+    public ResponseEntity<?> saveMember(@Validated @ApiParam final MemberDTO dto, BindingResult bindingResult, @RequestParam MemberGroup memberGroup) {
+       log.info(">> member group {{}}", memberGroup);
         if (bindingResult.hasErrors()) {
             final List<String> errors = bindingResult.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage)
                     .collect(Collectors.toList());

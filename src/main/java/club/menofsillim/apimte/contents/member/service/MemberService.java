@@ -1,6 +1,6 @@
-package club.menofsillim.apimte.member.service;
+package club.menofsillim.apimte.contents.member.service;
 
-import club.menofsillim.apimte.member.domain.entity.Member;
+import club.menofsillim.apimte.contents.member.domain.entity.Member;
 
 import java.util.List;
 
