@@ -1,4 +1,4 @@
-package club.menofsillim.apimte.member.domain.entity;
+package club.menofsillim.apimte.contents.member.domain.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -27,8 +27,7 @@ public class Member {
     private int age;
 
     @Builder
-    public Member(long id, String name, Integer age) {
-        this.id = id;
+    public Member(String name, Integer age) {
         this.name = name;
         this.age = age;
     }

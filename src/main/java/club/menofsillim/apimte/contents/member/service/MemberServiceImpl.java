@@ -1,7 +1,7 @@
-package club.menofsillim.apimte.member.service;
+package club.menofsillim.apimte.contents.member.service;
 
-import club.menofsillim.apimte.member.domain.entity.Member;
-import club.menofsillim.apimte.member.repository.MemberRepository;
+import club.menofsillim.apimte.contents.member.domain.entity.Member;
+import club.menofsillim.apimte.contents.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,3 +23,4 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.save(member);
     }
 }
+

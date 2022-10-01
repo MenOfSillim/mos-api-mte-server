@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-gradle-
       ## gradle build
       - name: Build with Gradle
-        run: ./gradlew clean build -x test
+        run: ./gradlew clean build
 
       ## ================= docker part =================
       - name: Docker meta
