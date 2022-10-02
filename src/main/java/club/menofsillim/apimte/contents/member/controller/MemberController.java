@@ -2,7 +2,7 @@ package club.menofsillim.apimte.contents.member.controller;
 
 import club.menofsillim.apimte.contents.member.domain.dto.MemberDTO;
 import club.menofsillim.apimte.contents.member.domain.entity.Member;
-import club.menofsillim.apimte.contents.member.enu.MemberGroup;
+import club.menofsillim.apimte.contents.member.type.MemberGroup;
 import club.menofsillim.apimte.contents.member.service.MemberService;
 import club.menofsillim.apimte.global.common.ErrorResponse;
 import io.swagger.annotations.ApiParam;

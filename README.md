@@ -12,3 +12,7 @@
 - PostgreSQL
 - Docker
 - JPA, QueryDSL
+
+## TABLE 구조
+
+- [MOS 메인 화면에 대한 테이블](https://drive.google.com/file/d/11VZOS2vqQzoATXBssM0Gbe_htD4fQIy1/view?usp=sharing)
