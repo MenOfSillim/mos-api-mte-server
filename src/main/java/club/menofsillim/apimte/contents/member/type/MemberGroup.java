@@ -1,4 +1,4 @@
-package club.menofsillim.apimte.contents.member.enu;
+package club.menofsillim.apimte.contents.member.type;
 
 import io.swagger.annotations.ApiModel;
 
