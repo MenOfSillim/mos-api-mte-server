@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class MosMember {
 
-    @Id
+    @Id @Column(name = "member_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberSeq;
 
@@ -39,7 +39,10 @@ public class MosMember {
     @Column(name = "site_link", nullable = false, length = 100)
     private String siteLink;
 
-    @Column(name = "description", nullable = false, length = 50)
+    @Column(name = "introduction", nullable = false, length = 50)
+    private String introduction;
+
+    @Column(name = "description", nullable = false, length = 500)
     private String description;
 
     @Column(name = "use_yn", nullable = false)
@@ -50,23 +53,33 @@ public class MosMember {
     private Date createdDate;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "member_skill")
+    @JoinTable(name = "member_skill", joinColumns=@JoinColumn(name = "mos_members_member_seq"),
+            inverseJoinColumns=@JoinColumn(name = "skills_skill_seq"))
     private List<Skill> skills = new ArrayList<>();
 
-    private MosMember(String nickName, String emailAddress, String firstName, String lastName, String imagePath, String siteLink, String description) {
+    private MosMember(String nickName, String emailAddress, String firstName, String lastName, String imagePath, String siteLink, String introduction, String description) {
         this.nickName = nickName;
         this.emailAddress = emailAddress;
         this.firstName = firstName;
         this.lastName = lastName;
         this.imagePath = imagePath;
         this.siteLink = siteLink;
+        this.introduction = introduction;
         this.description = description;
         this.useYn = true;
         this.createdDate = new Date();
     }
 
     public static MosMember of(final MosMemberInfoRequest request) {
-        return new MosMember(request.getNickName(), request.getEmailAddress(), request.getFirstName(), request.getLastName(), request.getImagePath(), request.getSiteLink(), request.getDescription());
+        return new MosMember(request.getNickName(), request.getEmailAddress(), request.getFirstName(), request.getLastName(), request.getImagePath(), request.getSiteLink(), request.getIntroduction(), request.getDescription());
+    }
+
+    public void deleteOf() {
+        this.useYn = false;
+    }
+
+    public void useOf() {
+        this.useYn = true;
     }
 
     @Override
