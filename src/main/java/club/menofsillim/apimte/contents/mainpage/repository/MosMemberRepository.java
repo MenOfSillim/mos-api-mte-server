@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MosMemberRepository extends JpaRepository<MosMember, Long> {
+public interface MosMemberRepository extends JpaRepository<MosMember, Long>, MosMemberRepositoryCustom {
 
     MosMember findMosMemberByNickNameAndUseYnTrue(final String nickName);
     Optional<MosMember> findMosMemberByMemberSeqAndUseYnTrue(final Long memberSeq);

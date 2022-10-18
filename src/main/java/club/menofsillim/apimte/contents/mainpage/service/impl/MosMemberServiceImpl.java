@@ -77,7 +77,7 @@ public class MosMemberServiceImpl implements MosMemberService {
 
     private void findExistsMosMember(final MosMemberInfoRequest request) {
         log.info(">> 사용자 정보 저장 :: [{}]", request);
-        MosMember mosMember = mosMemberRepository.findMosMemberByNickName(request.getNickName());
+        MosMember mosMember = mosMemberRepository.findCustomMosMemberByNickname(request.getNickName());
         if (!Objects.isNull(mosMember)) {
             throw new MosMemberDuplicateException("중복된 닉네임입니다.");
         }

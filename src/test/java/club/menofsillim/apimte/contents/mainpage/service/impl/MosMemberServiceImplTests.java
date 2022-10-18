@@ -48,11 +48,12 @@ class MosMemberServiceImplTests {
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
                 .imagePath("path/path")
-                .description("I'm Rubok!!")
+                .introduction("I'm Rubok!!")
+                .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
         instance.addToNewMosMember(request);
-        MosMember mosMember = mosMemberRepositoryMock.findMosMemberByNickName(nickName);
+        MosMember mosMember = mosMemberRepositoryMock.findMosMemberByNickNameAndUseYnTrue(nickName);
 
         assertNotNull(mosMember);
         assertEquals(nickName, mosMember.getNickName());

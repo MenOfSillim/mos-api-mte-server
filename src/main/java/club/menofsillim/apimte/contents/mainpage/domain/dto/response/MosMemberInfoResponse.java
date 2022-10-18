@@ -9,7 +9,7 @@ import lombok.ToString;
 import java.util.List;
 
 @Getter
-@ToString
+@ToString(exclude = {"skills"})
 @NoArgsConstructor
 public class MosMemberInfoResponse {
 
