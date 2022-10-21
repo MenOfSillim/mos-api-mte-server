@@ -70,7 +70,7 @@ public class MosMemberServiceImpl implements MosMemberService {
 
     @Override
     public void useMosMember(final Long memberSeq) {
-        MosMember mosMember = mosMemberRepository.findMosMembersByMemberSeqAndUseYnFalse(memberSeq).orElseThrow(MosMemberNotFoundExcpetion::new);
+        MosMember mosMember = mosMemberRepository.findMosMemberByMemberSeqAndUseYnFalse(memberSeq).orElseThrow(MosMemberNotFoundExcpetion::new);
 
         mosMember.useOf();
     }

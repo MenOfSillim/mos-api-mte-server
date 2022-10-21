@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 @Slf4j
 @Service
 @Transactional
@@ -28,6 +30,9 @@ public class SkillServiceImpl implements SkillService {
 
     private void findExistsSkill(final SkillInfoRequest request) {
         log.info(">> 기술 정보 저장 :: [{}]", request);
-        skillRepository.findSkillBySkillNameAndUseYnTrue(request.getSkillName()).orElseThrow(SkillInfoDuplicateException::new);
+        Skill existsSkill = skillRepository.findSkillBySkillName(request.getSkillName());
+        if (!Objects.isNull(existsSkill)) {
+            throw new SkillInfoDuplicateException("이미 존재하는 기술입니다.");
+        }
     }
 }

@@ -13,5 +13,5 @@ public interface MosMemberRepository extends JpaRepository<MosMember, Long>, Mos
     MosMember findMosMemberByNickNameAndUseYnTrue(final String nickName);
     Optional<MosMember> findMosMemberByMemberSeqAndUseYnTrue(final Long memberSeq);
     List<MosMember> findMosMembersByUseYnTrue();
-    Optional<MosMember> findMosMembersByMemberSeqAndUseYnFalse(final Long memberSeq);
+    Optional<MosMember> findMosMemberByMemberSeqAndUseYnFalse(final Long memberSeq);
 }
