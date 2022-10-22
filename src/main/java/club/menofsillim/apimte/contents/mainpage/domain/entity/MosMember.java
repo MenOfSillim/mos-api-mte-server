@@ -1,6 +1,8 @@
 package club.menofsillim.apimte.contents.mainpage.domain.entity;
 
+import club.menofsillim.apimte.contents.mainpage.domain.dto.request.MosMemberInfoRequest;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.util.Objects;
 @Entity
 @Getter
 @Table(name = "mos_member")
+@NoArgsConstructor
 public class MosMember {
 
     @Id
@@ -49,6 +52,22 @@ public class MosMember {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "member_skill")
     private List<Skill> skills = new ArrayList<>();
+
+    private MosMember(String nickName, String emailAddress, String firstName, String lastName, String imagePath, String siteLink, String description) {
+        this.nickName = nickName;
+        this.emailAddress = emailAddress;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.imagePath = imagePath;
+        this.siteLink = siteLink;
+        this.description = description;
+        this.useYn = true;
+        this.createdDate = new Date();
+    }
+
+    public static MosMember of(final MosMemberInfoRequest request) {
+        return new MosMember(request.getNickName(), request.getEmailAddress(), request.getFirstName(), request.getLastName(), request.getImagePath(), request.getSiteLink(), request.getDescription());
+    }
 
     @Override
     public boolean equals(Object o) {
