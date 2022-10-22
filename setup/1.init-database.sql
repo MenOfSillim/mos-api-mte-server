@@ -32,8 +32,7 @@ create table skill
         constraint uk_1ledx6hfgc5c7ht0js8bmdqs0
             unique,
     skill_type   varchar(20) not null
-        constraint uk_ab89p3834wnhurb7taaky0lp6
-            unique,
+        constraint uk_ab89p3834wnhurb7taaky0lp6,
     use_yn       boolean     not null
 );
 

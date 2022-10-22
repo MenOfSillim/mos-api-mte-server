@@ -25,8 +25,8 @@ class SkillServiceImplTests {
     @Test
     void save_newSkill_shouldSuccess() {
         SkillInfoRequest request = SkillInfoRequest.builder()
-                .skillName("Spring")
-                .skillType("Backend")
+                .skillName("React")
+                .skillType("Frontend")
                 .build();
 
         assertNotNull(instance.addToNewSkill(request));
@@ -35,15 +35,15 @@ class SkillServiceImplTests {
     @Test
     void save_duplicateSkill_shouldFail() {
         SkillInfoRequest request = SkillInfoRequest.builder()
-                .skillName("Spring")
-                .skillType("Backend")
+                .skillName("Vuejs")
+                .skillType("Frontend")
                 .build();
 
         instance.addToNewSkill(request);
 
         SkillInfoRequest duplicateRequest = SkillInfoRequest.builder()
-                .skillName("Spring")
-                .skillType("Backend")
+                .skillName("Vuejs")
+                .skillType("Frontend")
                 .build();
 
         assertThrows(SkillInfoDuplicateException.class, () -> {
