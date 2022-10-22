@@ -1,20 +1,22 @@
 package club.menofsillim.apimte.contents.mainpage.domain.entity;
 
-import club.menofsillim.apimte.contents.mainpage.domain.type.SkillType;
+import club.menofsillim.apimte.contents.mainpage.domain.dto.request.SkillInfoRequest;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Table(name = "skill")
+@NoArgsConstructor
 public class Skill {
 
     @Id
+    @Column(name = "skill_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long skillSeq;
 
@@ -22,10 +24,25 @@ public class Skill {
     private String skillName;
 
     @Column(name = "skill_type", nullable = false, unique = true, length = 20)
-    private SkillType skillType;
+    private String skillType;
 
-    @ManyToMany(mappedBy = "skills")
-    private List<MosMember> mosMembers = new ArrayList<>();
+    @Column(name = "use_yn", nullable = false)
+    private boolean useYn;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date", nullable = false)
+    private Date createdDate;
+
+    private Skill(String skillName, String skillType) {
+        this.skillName = skillName;
+        this.skillType = skillType;
+        this.useYn = true;
+        this.createdDate = new Date();
+    }
+
+    public static Skill of(final SkillInfoRequest request) {
+        return new Skill(request.getSkillName(), request.getSkillType());
+    }
 
     @Override
     public boolean equals(Object o) {
