@@ -23,7 +23,7 @@ public class Skill {
     @Column(name = "skill_name", nullable = false, unique = true, length = 15)
     private String skillName;
 
-    @Column(name = "skill_type", nullable = false, unique = true, length = 20)
+    @Column(name = "skill_type", nullable = false, length = 20)
     private String skillType;
 
     @Column(name = "use_yn", nullable = false)
