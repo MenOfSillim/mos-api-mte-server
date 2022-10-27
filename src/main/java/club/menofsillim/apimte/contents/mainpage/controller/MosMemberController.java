@@ -65,16 +65,15 @@ public class MosMemberController {
         return ResponseEntity.ok(memberService.addToSkillInMosMember(request));
     }
 
-
     @Operation(summary = "MOS member no use", description = "MOS 멤버 지우기")
     @DeleteMapping("/mos-members")
-    public void deleteMosMember(@ApiParam final Long memberSeq) {
+    public void deleteMosMember(@ApiParam @RequestParam final Long memberSeq) {
         memberService.deleteMosMember(memberSeq);
     }
 
     @Operation(summary = "MOS member use", description = "MOS 멤버 되돌리기")
     @PatchMapping("/mos-members")
-    public void useMosMember(@ApiParam final Long memberSeq) {
+    public void useMosMember(@ApiParam @RequestParam final Long memberSeq) {
         memberService.useMosMember(memberSeq);
     }
 }
