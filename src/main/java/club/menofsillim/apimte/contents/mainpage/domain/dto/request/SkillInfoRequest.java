@@ -6,14 +6,18 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @ToString
 @ApiModel(value = "기술 정보")
 public class SkillInfoRequest {
 
+    @NotNull
     @ApiParam(value = "기술 명", required = true)
     private String skillName;
 
+    @NotNull
     @ApiParam(value = "기술 분류", required = true)
     private String skillType;
 
