@@ -1,5 +1,6 @@
 package club.menofsillim.apimte.contents.mainpage.domain.dto.request;
 
+import club.menofsillim.apimte.global.common.enums.SkillType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import java.util.Objects;
 class SkillInfoRequestTests {
 
     String skillName = "Spring";
-    String skillType = "백엔드";
+    SkillType skillType = SkillType.BACKEND;
 
     @Test
     void setRequest_notNull_shouldSuccess() {
@@ -38,6 +39,6 @@ class SkillInfoRequestTests {
                 .skillName(skillName)
                 .build();
 
-        Assertions.assertThat(skillType).isEqualTo(skillType);
+        Assertions.assertThat(skillType).isEqualTo(request.getSkillType());
     }
 }

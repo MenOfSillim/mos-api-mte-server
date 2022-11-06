@@ -4,6 +4,7 @@ import club.menofsillim.apimte.contents.mainpage.domain.dto.request.SkillInfoReq
 import club.menofsillim.apimte.contents.mainpage.domain.entity.Skill;
 import club.menofsillim.apimte.contents.mainpage.domain.skill.SkillInfoDuplicateException;
 import club.menofsillim.apimte.contents.mainpage.repository.SkillRepository;
+import club.menofsillim.apimte.global.common.enums.SkillType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ class SkillServiceImplTests {
     void save_newSkill_shouldSuccess() {
         SkillInfoRequest request = SkillInfoRequest.builder()
                 .skillName("React")
-                .skillType("Frontend")
+                .skillType(SkillType.FRONTEND)
                 .build();
 
         assertNotNull(instance.addToNewSkill(request));
@@ -36,14 +37,14 @@ class SkillServiceImplTests {
     void save_duplicateSkill_shouldFail() {
         SkillInfoRequest request = SkillInfoRequest.builder()
                 .skillName("Vuejs")
-                .skillType("Frontend")
+                .skillType(SkillType.FRONTEND)
                 .build();
 
         instance.addToNewSkill(request);
 
         SkillInfoRequest duplicateRequest = SkillInfoRequest.builder()
                 .skillName("Vuejs")
-                .skillType("Frontend")
+                .skillType(SkillType.FRONTEND)
                 .build();
 
         assertThrows(SkillInfoDuplicateException.class, () -> {
@@ -56,7 +57,7 @@ class SkillServiceImplTests {
         String skillName = "Spring";
         SkillInfoRequest request = SkillInfoRequest.builder()
                 .skillName(skillName)
-                .skillType("Backend")
+                .skillType(SkillType.BACKEND)
                 .build();
 
         instance.addToNewSkill(request);

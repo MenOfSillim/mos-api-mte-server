@@ -1,13 +1,14 @@
 package club.menofsillim.apimte.contents.mainpage.domain.entity;
 
 import club.menofsillim.apimte.contents.mainpage.domain.dto.request.MosMemberInfoRequest;
+import club.menofsillim.apimte.global.BaseTimeEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,9 +16,10 @@ import java.util.Objects;
 @Getter
 @Table(name = "mos_member")
 @NoArgsConstructor
-public class MosMember {
+public class MosMember extends BaseTimeEntity {
 
-    @Id @Column(name = "member_seq")
+    @Id
+    @Column(name = "member_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberSeq;
 
@@ -33,8 +35,11 @@ public class MosMember {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "image_path", nullable = false, length = 100)
-    private String imagePath;
+    @Column(name = "avatar_path", nullable = false, length = 100)
+    private String avatarPath;
+
+    @Column(name = "profile_path", length = 100)
+    private String profilePath;
 
     @Column(name = "site_link", nullable = false, length = 100)
     private String siteLink;
@@ -48,30 +53,37 @@ public class MosMember {
     @Column(name = "use_yn", nullable = false)
     private boolean useYn;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_date", nullable = false)
-    private Date createdDate;
-
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "member_skill", joinColumns=@JoinColumn(name = "mos_members_member_seq"),
-            inverseJoinColumns=@JoinColumn(name = "skills_skill_seq"))
+    @JoinTable(name = "member_skill", joinColumns = @JoinColumn(name = "mos_members_member_seq"),
+            inverseJoinColumns = @JoinColumn(name = "skills_skill_seq"))
     private List<Skill> skills = new ArrayList<>();
 
-    private MosMember(String nickName, String emailAddress, String firstName, String lastName, String imagePath, String siteLink, String introduction, String description) {
+    @Builder
+    private MosMember(String nickName, String emailAddress, String firstName, String lastName, String avatarPath, String profilePath, String siteLink, String introduction, String description) {
         this.nickName = nickName;
         this.emailAddress = emailAddress;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.imagePath = imagePath;
+        this.avatarPath = avatarPath;
+        this.profilePath = profilePath;
         this.siteLink = siteLink;
         this.introduction = introduction;
         this.description = description;
         this.useYn = true;
-        this.createdDate = new Date();
     }
 
-    public static MosMember of(final MosMemberInfoRequest request) {
-        return new MosMember(request.getNickName(), request.getEmailAddress(), request.getFirstName(), request.getLastName(), request.getImagePath(), request.getSiteLink(), request.getIntroduction(), request.getDescription());
+    public static MosMember saveOf(final MosMemberInfoRequest request) {
+        return MosMember.builder()
+                .nickName(request.getNickName())
+                .emailAddress(request.getEmailAddress())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .avatarPath(request.getAvatarPath())
+                .profilePath(request.getProfilePath())
+                .siteLink(request.getSiteLink())
+                .introduction(request.getIntroduction())
+                .description(request.getDescription())
+                .build();
     }
 
     public void deleteOf() {

@@ -17,7 +17,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -36,7 +35,7 @@ public class MosMemberController {
         log.info(">> addToNewMosMember request data :: [{}]", request);
         if (bindingResult.hasErrors()) {
             final List<String> errors = bindingResult.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage)
-                    .collect(Collectors.toList());
+                    .toList();
             return ResponseEntity.badRequest().body(new ErrorResponse("400", "Validation Failure", errors));
         }
         return ResponseEntity.ok(memberService.addToNewMosMember(request));
@@ -59,7 +58,7 @@ public class MosMemberController {
         log.info(">> addTOSkillInMosMember request data :: [{}]", request);
         if (bindingResult.hasErrors()) {
             final List<String> errors = bindingResult.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage)
-                    .collect(Collectors.toList());
+                    .toList();
             return ResponseEntity.badRequest().body(new ErrorResponse("400", "Unsatisfied Parameter", errors));
         }
         return ResponseEntity.ok(memberService.addToSkillInMosMember(request));

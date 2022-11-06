@@ -33,7 +33,7 @@ public class MosMemberServiceImpl implements MosMemberService {
     @Override
     public MosMemberInfoResponse addToNewMosMember(final MosMemberInfoRequest request) {
         this.findExistsMosMember(request);
-        MosMember mosMember = mosMemberRepository.save(MosMember.of(request));
+        MosMember mosMember = mosMemberRepository.save(MosMember.saveOf(request));
         return new MosMemberInfoResponse(mosMember);
     }
 

@@ -35,7 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### yml ###
-src/main/resources/application-rubok.yml
-src/main/resources/application-david.yml

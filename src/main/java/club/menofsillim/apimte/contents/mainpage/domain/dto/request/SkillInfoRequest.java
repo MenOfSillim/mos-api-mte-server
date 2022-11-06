@@ -1,5 +1,6 @@
 package club.menofsillim.apimte.contents.mainpage.domain.dto.request;
 
+import club.menofsillim.apimte.global.common.enums.SkillType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import lombok.Builder;
@@ -15,14 +16,14 @@ public class SkillInfoRequest {
 
     @NotNull
     @ApiParam(value = "기술 명", required = true)
-    private String skillName;
+    private final String skillName;
 
     @NotNull
     @ApiParam(value = "기술 분류", required = true)
-    private String skillType;
+    private final SkillType skillType;
 
     @Builder
-    public SkillInfoRequest(String skillName, String skillType) {
+    public SkillInfoRequest(String skillName, SkillType skillType) {
         this.skillName = skillName;
         this.skillType = skillType;
     }

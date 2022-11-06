@@ -15,11 +15,11 @@ public class MosMemberSkillInfoRequest {
 
     @NotNull
     @ApiParam(value = "닉네임", required = true)
-    private String nickName;
+    private final String nickName;
 
     @NotNull
     @ApiParam(value = "기술 명", required = true)
-    private String skillName;
+    private final String skillName;
 
     @Builder
     public MosMemberSkillInfoRequest(String nickName, String skillName) {
