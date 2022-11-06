@@ -1,19 +1,20 @@
 package club.menofsillim.apimte.contents.mainpage.domain.entity;
 
 import club.menofsillim.apimte.contents.mainpage.domain.dto.request.SkillInfoRequest;
+import club.menofsillim.apimte.global.BaseTimeEntity;
+import club.menofsillim.apimte.global.common.enums.SkillType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Table(name = "skill")
 @NoArgsConstructor
-public class Skill {
+public class Skill extends BaseTimeEntity {
 
     @Id
     @Column(name = "skill_seq")
@@ -24,24 +25,27 @@ public class Skill {
     private String skillName;
 
     @Column(name = "skill_type", nullable = false, length = 20)
-    private String skillType;
+    private SkillType skillType;
 
     @Column(name = "use_yn", nullable = false)
     private boolean useYn;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_date", nullable = false)
-    private Date createdDate;
-
-    private Skill(String skillName, String skillType) {
+    private Skill(String skillName, SkillType skillType) {
         this.skillName = skillName;
         this.skillType = skillType;
         this.useYn = true;
-        this.createdDate = new Date();
     }
 
-    public static Skill of(final SkillInfoRequest request) {
+    public static Skill saveOf(final SkillInfoRequest request) {
         return new Skill(request.getSkillName(), request.getSkillType());
+    }
+
+    public void deleteOf() {
+        this.useYn = false;
+    }
+
+    public void useOf() {
+        this.useYn = true;
     }
 
     @Override
