@@ -5,6 +5,7 @@ import club.menofsillim.apimte.contents.mainpage.domain.dto.request.SkillInfoReq
 import club.menofsillim.apimte.contents.mainpage.domain.entity.MosMember;
 import club.menofsillim.apimte.contents.mainpage.domain.entity.Skill;
 import club.menofsillim.apimte.contents.mainpage.domain.mosmember.MosMemberNotFoundExcpetion;
+import club.menofsillim.apimte.global.common.enums.SkillType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,11 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
                 .description("I'm Rubok!!")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         assertThrows(DataIntegrityViolationException.class, () -> {
             mosMemberRepository.save(member);
@@ -57,12 +58,12 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member1 = MosMember.of(request);
+        MosMember member1 = MosMember.saveOf(request);
 
         mosMemberRepository.save(member1);
 
@@ -80,21 +81,21 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         mosMemberRepository.save(member);
 
         SkillInfoRequest skillInfoRequest = SkillInfoRequest.builder()
                 .skillName("Spring")
-                .skillType("Backend")
+                .skillType(SkillType.BACKEND)
                 .build();
 
-        Skill skill = Skill.of(skillInfoRequest);
+        Skill skill = Skill.saveOf(skillInfoRequest);
 
         skillRepository.save(skill);
 
@@ -111,12 +112,12 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         mosMemberRepository.save(member);
 
@@ -138,12 +139,13 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
+                .profilePath("images/profile/rubok")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         mosMemberRepository.save(member);
 
@@ -163,12 +165,13 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
+                .profilePath("images/profile/rubok")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         mosMemberRepository.save(member);
 
@@ -187,12 +190,13 @@ class MosMemberRepositoryTests {
                 .firstName("seok")
                 .lastName("gyuhwan")
                 .emailAddress("truespring1@gmail.com")
-                .imagePath("path/path")
+                .avatarPath("path/path")
+                .profilePath("images/profile/rubok")
                 .introduction("I'm Rubok!!")
                 .description("I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.")
                 .build();
 
-        MosMember member = MosMember.of(request);
+        MosMember member = MosMember.saveOf(request);
 
         mosMemberRepository.save(member);
 
