@@ -18,7 +18,8 @@ public class MosMemberInfoResponse {
     private String emailAddress;
     private String firstName;
     private String lastName;
-    private String imagePath;
+    private String avatarPath;
+    private String profilePath;
     private String introduction;
     private String description;
     private List<Skill> skills;
@@ -29,7 +30,8 @@ public class MosMemberInfoResponse {
         this.emailAddress = mosMember.getEmailAddress();
         this.firstName = mosMember.getFirstName();
         this.lastName = mosMember.getLastName();
-        this.imagePath = mosMember.getImagePath();
+        this.avatarPath = mosMember.getAvatarPath();
+        this.profilePath = mosMember.getProfilePath();
         this.introduction = mosMember.getIntroduction();
         this.description = mosMember.getDescription();
         this.skills = mosMember.getSkills().stream().toList();

@@ -28,8 +28,12 @@ public class MosMemberInfoRequest {
     private String lastName;
 
     @NotNull
-    @ApiParam(value = "이미지 경로", required = true)
-    private String imagePath;
+    @ApiParam(value = "아바타 이미지 경로", required = true)
+    private String avatarPath;
+
+    @NotNull
+    @ApiParam(value = "프로필 이미지 경로", required = true)
+    private String profilePath;
 
     @NotNull
     @ApiParam(value = "깃허브 주소", required = true)
@@ -44,12 +48,13 @@ public class MosMemberInfoRequest {
     private String description;
 
     @Builder
-    public MosMemberInfoRequest(String nickName, String emailAddress, String firstName, String lastName, String imagePath, String siteLink, String introduction, String description) {
+    public MosMemberInfoRequest(String nickName, String emailAddress, String firstName, String lastName, String avatarPath, String profilePath, String siteLink, String introduction, String description) {
         this.nickName = nickName;
         this.emailAddress = emailAddress;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.imagePath = imagePath;
+        this.avatarPath = avatarPath;
+        this.profilePath = profilePath;
         this.siteLink = siteLink;
         this.introduction = introduction;
         this.description = description;

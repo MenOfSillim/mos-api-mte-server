@@ -24,7 +24,7 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public SkillInfoResponse addToNewSkill(SkillInfoRequest request) {
         this.findExistsSkill(request);
-        Skill skill = skillRepository.save(Skill.of(request));
+        Skill skill = skillRepository.save(Skill.saveOf(request));
         return new SkillInfoResponse(skill);
     }
 

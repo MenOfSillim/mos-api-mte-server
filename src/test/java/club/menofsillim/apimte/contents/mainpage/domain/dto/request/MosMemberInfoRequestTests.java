@@ -12,7 +12,8 @@ class MosMemberInfoRequestTests {
     String emailAddress = "truspring1@gmail.com";
     String firstName = "Seok";
     String lastName = "gyuhwan";
-    String imagePath = "images/profiles/rubok";
+    String avatarPath = "images/avatar/rubok";
+    String profilePath = "images/profile/rubok";
     String siteLink = "https://github.com/truespring";
     String introduction = "I'm Rubok!!!";
     String description = "I'm Backend Developer. I work in Fassto. Fassto is Fullfillment Service provider Company.";
@@ -25,7 +26,8 @@ class MosMemberInfoRequestTests {
                 .emailAddress(emailAddress)
                 .firstName(firstName)
                 .lastName(lastName)
-                .imagePath(imagePath)
+                .avatarPath(avatarPath)
+                .profilePath(profilePath)
                 .siteLink(siteLink)
                 .introduction(introduction)
                 .description(description)
@@ -42,7 +44,8 @@ class MosMemberInfoRequestTests {
                 .emailAddress(emailAddress)
                 .firstName(firstName)
                 .lastName(lastName)
-                .imagePath(imagePath)
+                .avatarPath(avatarPath)
+                .profilePath(profilePath)
                 .siteLink(siteLink)
                 .introduction(introduction)
                 .description(description)
